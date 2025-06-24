@@ -288,3 +288,11 @@ mongoose.connect('mongodb+srv://saiadithya2022:xT7lytRxwIu32IYs@stock-app.kmiyrf
     });
 }
 ).catch((e)=> console.log(`Error in db connection ${e}`));
+
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
